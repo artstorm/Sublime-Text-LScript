@@ -1,0 +1,88 @@
+<snippet>
+	<content><![CDATA[
+//-----------------------------------------
+// LScript Displacement Map template
+//
+
+@version 2.2
+@warnings
+@script displace
+
+// global values go here
+
+currentTime,currentFrame;
+myObject;
+
+create
+{
+	// one-time initialization takes place here
+
+	myObject = nil;
+}
+
+destroy
+{
+	// take care of final clean-up activities here
+}
+
+newtime: id, frame, time
+{
+	// called each time the current time index changes in the scene
+
+	myObject = id if !myObject;
+	currentTime = time;
+	currentFrame = frame;
+}
+
+flags
+{
+	// let's Layout know how you wish to process points:
+	// WORLD      LOCAL
+
+	return(WORLD);   // we want vector values in World coordinates
+}
+
+process: da
+{
+	// called for each point in 'myObject'
+}
+
+load: what,io
+{
+	if(what == SCENEMODE)   // processing an ASCII scene file
+	{
+	}
+}
+
+save: what,io
+{
+	if(what == SCENEMODE)
+	{
+	}
+}
+
+options
+{
+	reqbegin("<Requester Title>");
+
+	c0 = ctlinteger("Integer Control",1);
+	c1 = ctlnumber("Number Control",1.0);
+	c2 = ctlstring("String Control","my string");
+	c3 = ctlcheckbox("Checkbox Control",true);
+	c4 = ctlpopup("Popup control",1,@"Item 1","Item 2","Item 3"@);
+	c5 = ctlchoice("Choice Control",1,@"X","Y","Z"@);
+
+	return if !reqpost();
+
+	// get requester control values here
+
+	reqend();
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger></tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.lscript</scope>
+	<!-- description, syns i auto completion listan in view -->
+	<description>Template: Displacement Map</description>
+</snippet>

@@ -1,0 +1,41 @@
+<snippet>
+	<content><![CDATA[
+//-----------------------------------------
+// LScript Modeler template
+//
+
+@version 2.2
+@warnings
+@script modeler
+
+// global values go here
+
+main
+{
+	// requester code goes here
+
+	reqbegin("<Requester Title>");
+
+	c0 = ctlinteger("Integer Control",1);
+	c1 = ctlnumber("Number Control",1.0);
+	c2 = ctlstring("String Control","my string");
+	c3 = ctlcheckbox("Checkbox Control",true);
+	c4 = ctlpopup("Popup control",1,@"Item 1","Item 2","Item 3"@);
+	c5 = ctlchoice("Choice Control",1,@"X","Y","Z"@);
+
+	return if !reqpost();
+
+	// get requester control values here
+
+	reqend();
+
+	// processing code goes here
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger></tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.lscript</scope>
+	<!-- description, syns i auto completion listan in view -->
+	<description>Template: Modeler</description>
+</snippet>
