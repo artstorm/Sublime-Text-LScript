@@ -94,5 +94,5 @@ options
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>source.lscript</scope>
 	<!-- description, syns i auto completion listan in view -->
-	<description>Template: Procedural Texture</description>
+	<description>Procedural Texture</description>
 </snippet>
