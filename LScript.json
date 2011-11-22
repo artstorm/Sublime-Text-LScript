@@ -1,0 +1,156 @@
+{
+	"name": "LScript",
+	"scopeName": "source.lscript", 
+	"fileTypes": ["ls"],
+	"comment": "LightWave 3D LScript Syntax Definition v1.0. Author: Johan Steen, artstorm.net",
+	"patterns": [
+
+		{
+			"begin": "\\/\\*",
+			"end": "\\*\\/",
+			"name": "comment.line.block.lscript",
+			"comment": "Block Comments"
+		},
+		{
+			"begin": "//",
+			"end": "$",
+			"name": "comment.line.double-slash.lscript",
+			"comment": "Single Line Comments"
+		},
+
+
+
+		{
+			"match": "\\d*(?<!\\.)(\\.)\\d+",
+			"name": "constant.numeric.number.lscript",
+			"comment": "Numeric Numbers (float)."
+		},
+		{
+			"match": "(?<!\\w)\\d+(?!\\w)",
+			"name": "constant.numeric.integer.lscript",
+			"comment": "Numeric Integers."
+		},
+		{
+			"match": "\\b(true|TRUE|false|FALSE|nil)\\b",
+			"name": "constant.language.lscript",
+			"comment": "Special language constants like True, null etc"
+		},
+
+
+
+		{
+			"comment": "entity"
+		},
+		{
+			"match": "(^[a-zA-Z_0-9]+)(\\s*$|:)",
+			"captures":
+			{
+				"1": { "name": "entity.name.function.lscript" }
+			},
+			"comment": "Definition of a new funciton"
+		},
+
+
+
+		{
+			"comment": "invalid"
+		},
+
+
+
+		{
+			"match": "\\b(if|else|switch|case|default|for|foreach|while|continue|break|return)\\b",
+			"name": "keyword.control.lscript",
+			"comment": "Flow control like continue, while, return etc"
+		},
+		{
+			"match": "[+%*/\\-<>!|&=]",
+			"name": "keyword.operator.lscript",
+			"comment": "Textual (ie. OR) and character operators"
+		},
+
+
+
+		{
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+			{
+				"match": "\\\\[t|n]",
+				"name": "constant.character.lscript",
+				"comment": "Character representations"
+			},
+			{
+				"match": "\\\\\"",
+				"name": "constant.character.escape.lscript",
+				"comment": "Escape sequences"
+			}
+			],
+			"name": "string.quoted.double.lscript",
+			"comment": "Double quoted strings"
+		},
+		{
+			"match": "(regexp)\\s*\\((\".*\")\\)",
+			"captures": {
+				"1": { "name": "support.function.lscript" },
+				"2": { "name": "string.regexp.lscript" }
+			},
+			"comment": "Regular Expression strings"
+		},
+
+
+
+		{
+			"match": "\\b(cleanup|cloned|create|destroy|editbegin|else|flags|generic|if|init|load|main|newtime|options|process|reqmousedown|reqmousemove|reqmousetrack|reqmouseup|save|undogroupbegin|editend|undogroupend)\\b",
+			"name": "support.function.lscript",
+			"comment": ""
+		},
+		{
+			"match": "\\b(abs|acos|active|addLayer|addParticle|addcurve|addpoint|addpolygon|addquad|addtriangle|alertlevel|alignpols|alpha|alphaprefix|alphaspot|ambient|angle|animfilename|append|asAsc|asBin|asInt|asNum|asStr|asVec|ascii|asin|atan|attach|autoflex|autokeycreate|axisdrill|axislocks|backdropColor|backdropRay|backdropSqueeze|backdroptype|bend|bevel|binary|blue|blurLength|bone|boolean|boundingbox|boxthreshold|break|button|case|ceil|center|changepart|changesurface|channelsvisible|chdir|childrenvisible|clearimage|close|close|closeall|cmdseq|color|compbg|compfg|compfgalpha|comringattach|comringdecode|comringdetach|comringencode|comringmsg|coneangles|contains|continue|copy|copy|copysurface|cos|cosh|cosine|cot|count|createKey|createsurface|cross2d|cross3d|csc|ctl|ctlactive|ctlalign|ctlallitems|ctlangle|ctlboneitems|ctlbutton|ctlcameraitems|ctlchannel|ctlcheckbox|ctlchoice|ctlcolor|ctldistance|ctledit|ctlfilename|ctlfont|ctlgroup|ctlhsv|ctlimage|ctlimageitems|ctlinfo|ctlinteger|ctllightitems|ctllistbox|ctlmenu|ctlmeshitems|ctlminislider|ctlnumber|ctlpage|ctlpercent|ctlpopup|ctlposition|ctlrefresh|ctlrgb|ctlsep|ctlslider|ctlstate|ctlstring|ctlsurface|ctltab|ctltext|ctlvector|ctlviewport|ctlvisible|curFilename|curFrame|curTime|curType|currenttime|cut|date|debug|deformregion|deg|delete|deleteKey|depth|detach|diffshade|diffuse|dimensions|displayopts|dot2d|dot3d|drawCircle|drawLine|drawPoint|drawText|drawTriangle|drawborder|drawbox|drawcircle|drawelipse|drawerase|drawfillcircle|drawfillelipse|drawline|drawpixel|drawtext|drawtextheight|drawtextwidth|dump|dynamicupdate|edit|end|end|eof|error|eta|event|exit|exp|expose|extent|extrude|fStop|fac|false|filecrc|filedelete|fileexists|filefind|filename|filerename|filestat|firstChannel|firstChild|firstLayer|firstSelect|fixedflex|flip|floor|focalDistance|focalLength|fogColor|fogMaxAmount|fogMaxDist|fogMinAmount|fogMinDist|fogtype|fontclear|fontcount|fontindex|fontload|fontname|for|foreach|format|fovAngles|fps|frac|fracsubdivide|frame|frame|frameend|frameheight|framestart|framestep|framewidth|freezecurves|fullpath|gNorm|gamma|generalopts|genus|geometry|get|getChannelGroup|getEnvelope|getForward|getKeyBias|getKeyContinuity|getKeyCurve|getKeyHermite|getKeyTension|getKeyTime|getKeyValue|getParticle|getPivot|getPosition|getRight|getRotation|getScaling|getSelect|getTag|getTexture|getUp|getValue|getWorldForward|getWorldPosition|getWorldRight|getWorldRotation|getWorldUp|getdefaultsurface|getdir|getenv|getfile|getfirstitem|getsep|getvalue|globalBlur|globalMask|globalResolution|globalrecall|globalstore|goal|green|h|hasAlpha|hasCCEnd|hasCCStart|hash|height|hex|hostBuild|hostVersion|hypot|id|illuminate|indexOf|info|innerlimit|integer|isAlnum|isAlpha|isAscii|isBone|isCamera|isChannel|isChannelGroup|isCntrl|isColor|isCurve|isDigit|isEnvelope|isImage|isInt|isLight|isLower|isMapped|isMesh|isNil|isNum|isOriginal|isPrint|isPunct|isScene|isSpace|isStr|isUpper|isVMap|isValid|isVec|isXDigit|jitter|keyCount|keyExists|keys|lathe|layer|layerName|layerName|layerVisible|layerVisible|library|licenseId|limiteregion|limits|line|linecount|loadimage|locked|log|log10|lscriptVersion|luma|luminous|lyrbg|lyrdata|lyrempty|lyremptybg|lyremptyfg|lyrfg|lyrsetbg|lyrsetfg|lyrswap|magnet|make4patch|makeball|makebox|makecone|makedisc|maketesball|maketext|matchdirs|matchfiles|max|maxsamplesperpixel|mergepoints|mergepols|meshedit|min|minsamplesperpixel|mirror|mirror|mkdir|mod|monend|moninit|monstep|morphpols|motionx|motiony|move|name|new|newFilename|newFrame|newTime|newType|next|nextChannel|nextChild|nextLayer|nextSelect|nextsurface|nil|nl|normalize|null|number|numthreads|oPos|oXfrm|objID|octal|offset|open|outerlimit|overlayglyph|pack|param|parent|parse|parse|paste|paste|pathclone|pathextrude|persist|pixel|pixel|pixelaspect|point|pointCount|pointcount|pointcount|pointinfo|pointmove|points|points|polNum|pole|polycount|polycount|polygon|polygonCount|polygons|polyinfo|polynormal|polypointcount|polypoints|polysurface|position|postBehavior|pow|preBehavior|previewend|previewstart|previewstep|quantize|rad|railclone|railextrude|random|randu|range|range|rawblue|rawgreen|rawred|rayCast|rayLength|raySource|rayTrace|read|read|readByte|readDouble|readInt|readInt|readNumber|readNumber|readShort|readShort|readString|readVector|readdouble|recall|recursiondepth|red|redo|reduce|reflectblue|reflectgreen|reflectred|regexp|remParticle|removepols|rempoint|rempoly|renamesurface|renderCamera|renderend|renderopts|renderstart|renderstep|rendertype|reopen|replace|reqabort|reqbegin|reqend|reqisopen|reqkeyboard|reqopen|reqposition|reqpost|reqredraw|reqresize|reqsize|requpdate|reset|restParam|restlength|return|revert|rewind|rgb|rgbambient|rgbcolor|rgbprefix|rgbspot|rmdir|rotate|roughness|round|runningUnder|scale|schemaPosition|sec|select|select|selected|selector|selectvmap|selhide|selinvert|selmode|selpoint|selpolygon|selunhide|server|serverFlags|set|setChannelGroup|setColor|setColor|setKeyBias|setKeyContinuity|setKeyCurve|setKeyHermite|setKeyTension|setKeyValue|setParticle|setPattern|setPattern|setPoints|setTag|setValue|setdesc|setlayername|setobject|setpivot|setsurface|setvalue|shading|shadow|shadows|shadowtype|shapebevel|shear|sin|sinh|size|size|sizeof|skinpols|sleep|smooth|smoothcurves|smoothscale|smoothshift|soliddrill|sortA|sortD|source|spawn|special|specshade|specular|split|splitpols|spotsize|sqrt|start|step|store|string|strleft|strlower|strright|strsub|strupper|subdivide|surface|swaphidden|switch|sx|sy|sz|tan|tanh|taper|target|targetobject|terminate|text|time|toggleCCend|toggleCCstart|togglepatches|totallayers|totalpoints|totalpolygons|trans|transparency|triple|true|trunc|twist|type|undo|unifypols|unweld|value|value|vector|vertex|vertexCount|view|visibility|visibility|visible|visible|visitnodes|vmag|vortex|w|wNorm|wPos|wXfrm|wait|warn|weldaverage|weldpoints|when|while|width|write|write|writeByte|writeData|writeDouble|writeDouble|writeInt|writeInt|writeNumber|writeNumber|writeShort|writeShort|writeString|writeVector|writeln|x|xoffset|y|yoffset|z|zoomFactor)\\b",
+			"name": "support.function.lscript",
+			"comment": ""
+		},
+		{
+			"match": "\\b(ABORT|AKC_ALL|AKC_MODIFIED|AKC_OFF|ALERT_BEGINNER|ALERT_EXPERT|ALERT_INTERMEDIATE|ANIMATIONSDIR|AREALIGHT|BONE|CAMERA|CAUSTICSCACHE|CENTER|CHANNEL|CHAN_ANGLE|CHAN_BEZIER|CHAN_CONSTANT|CHAN_DISTANCE|CHAN_HERMITE|CHAN_LINEAR|CHAN_LINEAR|CHAN_NUMBER|CHAN_OFFSET|CHAN_OSCILLATE|CHAN_PERCENT|CHAN_REPEAT|CHAN_RESET|CHAN_STEPPED|CHAN_TCB|CLEAR|COMMANDDIR|CONNECT|CONTENTDIR|CS|CURVE|DIRECT|DISTANTLIGHT|DYNUP_DELAYED|DYNUP_INTERACTIVE|DYNUP_OFF|ENVELOPESDIR|FACE|FLAT|FONTSDIR|FORWARD|FROMEND|FROMHERE|FROMSTART|GLOBAL|GRADIENT|HIERARCHIESDIR|IMAGESDIR|IN|INSTALLDIR|LAYOUT|LEFT|LIGHT|LINEAR|LINEARLIGHT|LOCAL|LWRDFLG_SHOW_BEHIND|LWRDFLG_SHOW_CELLS|LWRDFLG_SHOW_COLOR_CELLS|LWRDFLG_SHOW_MISSING_PREPROCESS_SAMPLES|LWRDFLG_SHOW_MISSING_RENDER_SAMPLES|LWRDFLG_SHOW_NODES|LWRDFLG_SHOW_SAMPLES|LWRDFLG_SHOW_SECOND_BOUNCE|LWRDFLG_USE_BUMPS|LWROPT_BLURBACKGROUND|LWROPT_CACHERADIOSITY|LWROPT_CAUSTICS|LWROPT_DEPTHOFFIELD|LWROPT_DIRECTIONALRAYS|LWROPT_ENHANCEDAA|LWROPT_EVENFIELDS|LWROPT_FIELDS|LWROPT_INTERPOLATED|LWROPT_LIMITDYNAMICRANGE|LWROPT_LIMITEDREGION|LWROPT_MOTIONBLUR|LWROPT_OCCLUSION|LWROPT_PARTICLEBLUR|LWROPT_RADIOSITY|LWROPT_REFLECTTRACE|LWROPT_REFRACTTRACE|LWROPT_RENDERLINES|LWROPT_RTTRANSPARENCIES|LWROPT_SAVEALPHA|LWROPT_SAVEANIM|LWROPT_SAVERGB|LWROPT_SHADOWTRACE|LWROPT_USEAMBIENT|LWROPT_USETRANSPARENCY|LWROPT_VOLUMETRICRADIOSITY|LWROPT_ZBUFFERAA|LWRT_BACKDROP|LWRT_FINALGATHER|LWRT_MONTECARLO|MACROSDIR|MBALL|MD|MESH|METAFORM|MODELER|MOTIONSDIR|NODEPTH|NONE|NONLINEAR1|NONLINEAR2|NONPLANAR|NPEQ|NPGT|NPLT|NVEQ|NVGT|NVLT|OBJECTSDIR|OUTPUTDIR|PART|PART_AGE|PART_ALIVE|PART_COLLISION|PART_DEAD|PART_ENABLE|PART_ENABLE|PART_FORCE|PART_ID|PART_LIMBO|PART_LINK|PART_MASS|PART_POSITION|PART_PRESSURE|PART_RGBA|PART_ROTATION|PART_SCALE|PART_SIZE|PART_TEMPERATURE|PART_VELOCITY|PATCH|PATTERN_DASH|PATTERN_DOT|PATTERN_LONGDOT|PATTERN_SOLID|PIVOT|PLUGINSDIR|POINTID|POINTLIGHT|POINTNDX|POLYID|POLYNDX|POSITION|PREBONE|PREVIEWSDIR|QUICKRENDER|REALISTICRENDER|REQKB_ALT|REQKB_CTRL|REQKB_DELETE|REQKB_DOWN|REQKB_END|REQKB_F1|REQKB_F10|REQKB_F11|REQKB_F12|REQKB_F2|REQKB_F3|REQKB_F4|REQKB_F5|REQKB_F6|REQKB_F7|REQKB_F8|REQKB_F9|REQKB_HELP|REQKB_HOME|REQKB_INSERT|REQKB_KB0|REQKB_KB1|REQKB_KB2|REQKB_KB3|REQKB_KB4|REQKB_KB5|REQKB_KB6|REQKB_KB7|REQKB_KB8|REQKB_KB9|REQKB_KP0|REQKB_KP1|REQKB_KP2|REQKB_KP3|REQKB_KP4|REQKB_KP5|REQKB_KP6|REQKB_KP7|REQKB_KP8|REQKB_KP9|REQKB_LEFT|REQKB_PAGEDOWN|REQKB_PAGEUP|REQKB_RETURN|REQKB_RIGHT|REQKB_SHIFT|REQKB_UP|RIGHT|RIGHT|ROTATION|SCALING|SCENE|SCENEMODE|SCENESDIR|SCHEMA|SCREAMERNET|SCRIPTID|SCRIPTSDIR|SELECTED|SERVER_ANIMLOADER_H|SERVER_ANIMLOADER_I|SERVER_ANIMSAVER_H|SERVER_ANIMSAVER_I|SERVER_ANIMUV_H|SERVER_ANIMUV_I|SERVER_CAMERA_H|SERVER_CAMERA_I|SERVER_CHANNEL_H|SERVER_CHANNEL_I|SERVER_CUSTOMOBJ_H|SERVER_CUSTOMOBJ_I|SERVER_DISPLACEMENT_H|SERVER_DISPLACEMENT_I|SERVER_ENVIRONMENT_H|SERVER_ENVIRONMENT_I|SERVER_FRAMEBUFFER_H|SERVER_FRAMEBUFFER_I|SERVER_IMAGEFILTER_H|SERVER_IMAGEFILTER_I|SERVER_ITEMMOTION_H|SERVER_ITEMMOTION_I|SERVER_MASTER_H|SERVER_MASTER_I|SERVER_NODE_H|SERVER_NODE_I|SERVER_OBJREPLACEMENT_H|SERVER_OBJREPLACEMENT_I|SERVER_PIXELFILTER_H|SERVER_PIXELFILTER_I|SERVER_SHADER_H|SERVER_SHADER_I|SERVER_TEXTURE_H|SERVER_TEXTURE_I|SERVER_VOLUMETRIC_H|SERVER_VOLUMETRIC_I|SET|SETTINGSDIR|SHADOWMAP|SHADOWOFF|SHADOWRAYTRACE|SKELEGON|SMOOTH|SOLID|SPOTLIGHT|SURFACE|SURFACESDIR|SURFADTR|SURFAVAL|SURFBUF1|SURFBUF2|SURFBUF3|SURFBUF4|SURFBUMP|SURFCLRF|SURFCLRH|SURFCOLR|SURFDIFF|SURFGLOS|SURFGLOW|SURFGVAL|SURFLCOL|SURFLINE|SURFLSIZ|SURFLUMI|SURFRBLR|SURFREFL|SURFRIMG|SURFRIND|SURFRSAN|SURFSHRP|SURFSIDE|SURFSMAN|SURFSPEC|SURFTBLR|SURFTIMG|SURFTRAN|SURFTRNL|SURFTSAN|SURFVCOL|SYS_ICON|SYS_OBJECT|SYS_WORLD|TEMPDIR|TXLRAAVALUE|TXLRANTIALIAS|TXLRAXIS|TXLRCOORD|TXLREFOBJ|TXLRFALLOFF|TXLRHREPEAT|TXLRHWRAP|TXLRIMAGE|TXLROPACITY|TXLRPIXBLEND|TXLRPOSITION|TXLRPROJECT|TXLRROTATION|TXLRSIZE|TXLRVMAP|TXLRWREPEAT|TXLRWWRAP|TXPJCUBIC|TXPJCYLINDRICAL|TXPJFRONT|TXPJPLANAR|TXPJSPHERICAL|TXPJUVMAP|TXRPEDGE|TXRPMIRROR|TXRPREPEAT|TXRPRESET|TXTRGRADIENT|TXTRIMAGE|TXTRPROCEDURE|UNSELECTED|UP|USEBEHINDTEST|USEGRADIENT|USER|VIEW_CAMERA|VIEW_LIGHT|VIEW_PERSP|VIEW_SCHEMA|VIEW_XY|VIEW_XZ|VIEW_ZY|VIS_BOUNDINGBOX|VIS_FFWIREFRAME|VIS_HIDDEN|VIS_SHADED|VIS_TEXTURED|VIS_VERTICES|VIS_VISIBLE|VIS_WIREFRAME|VMMORPH|VMRGB|VMRGBA|VMSELECT|VMSPOT|VMSUBPATCH|VMTEXTURE|VMWEIGHT|VOLEXCL|VOLINCL|VOLUME|VPINDEX|WFORWARD|WIRERENDER|WORLD|WPOSITION|WRIGHT|WUP)\\b",
+			"name": "support.constant.lscript",
+			"comment": ""
+		},
+		{
+			"match": "\\b(About|AboutOpenGL|AdaptiveSampling|AdaptiveThreshold|AddAreaLight|AddBone|AddButton|AddCamera|AddChildBone|AddDistantLight|AddEnvelope|AddLinearLight|AddNull|AddPartigon|AddPlugins|AddPointLight|AddPosition|AddRotation|AddScale|AddSpotlight|AddToSelection|AdjustRegionTool|AffectCaustics|AffectDiffuse|AffectOpenGL|AffectSpecular|AlertLevel|AmbientColor|AmbientIntensity|Antialiasing|ApertureHeight|ApplyServer|AreaLight|AutoConfirm|AutoFrameAdvance|AutoKey|BController|BLimits|BlurLength|BStiffness|BackView|BackdropColor|BoneActive|BoneFalloffType|BoneJointComp|BoneJointCompAmounts|BoneJointCompParent|BoneLimitedRange|BoneMaxRange|BoneMinRange|BoneMuscleFlex|BoneMuscleFlexAmounts|BoneMuscleFlexParent|BoneNormalization|BoneRestLength|BoneRestPosition|BoneRestRotation|BoneSource|BoneStrength|BoneStrengthMultiply|BoneType|BoneWeightMapName|BoneWeightMapOnly|BoneWeightShade|BoneXRay|BottomView|BoundingBoxThreshold|CacheCaustics|CacheRadiosity|CacheShadowMap||CameraMask|CameraView|CameraZoomTool|CastShadow|CausticIntensity|CenterItem|CenterMouse|ChangeTool|ClearAllBones|ClearAllCameras|ClearAllLights|ClearAllObjects|ClearAudio|ClearScene|ClearSelected|Clone|CommandHistory|CommandInput|Compositing|ConeAngleTool|ContentDirectory|Control_Management|CreateKey|DecreaseGrid|DeleteKey|DepthBufferAA|DepthOfField|DisplayOptions|DistantLight|DrawAntialiasing|DrawBones|DrawChildBones|DynamicUpdate|EditBones|EditCameras|EditKeys|EditLights|EditMenus|EditObjects|EditPlugins|EditServer|EnableCaustics|EnableDeformations|EnableIK|EnableLensFlares|EnableRadiosity|EnableServer|EnableShadowMaps|EnableVIPER|EnableVolumetricLights|EnableXH|EnableYP|EnableZB|EnhancedAA||ExcludeLight|ExcludeObject|EyeSeparation|FasterBones|FirstFrame|FirstItem|FitAll|FitSelected|FlareIntensity|FlareOptions|FocalDistance|FogColor|FogMaxAmount|FogMaxDistance|FogMinAmount|FogMinDistance|FogType|FractionalFrames|FrameSize|FrameStep|FramesPerSecond|FreePreview|FrontView|FullTimeIK|GeneralOptions|Generics|GlobalApertureHeight|GlobalBlurLength|GlobalFrameSize|GlobalIllumination|GlobalMaskPosition|GlobalMotionBlur|GlobalParticleBlur|GlobalPixelAspect|GlobalResolutionMulitplier|GoToFrame|GoalItem|GoalStrength|GradientBackdrop|GraphEditor|GridSize|GroundColor|HController|HLimits|HStiffness|HideToolbar|HideWindows|ImageEditor|ImageProcessing|IncludeLight|IncludeObject|IncreaseGrid|IndirectBounces||IsOpen|ItemActive|ItemColor|ItemLock|ItemProperties|ItemVisibilty|Item_SetWindowPos|KeepGoalWithinReach|LastFrame|LastItem|LastPluginInterface|Layout_SetWindowPos|Layout_SetWindowSize|LeftView|LensFStop|LensFlare|LightColor|LightConeAngle|LightEdgeAngle|LightFalloffType|LightIntensity|LightIntensityTool|LightQuality|LightRange|LightView|LimitB|LimitDynamicRange|LimitH|LimitP|LimitedRegion|LinearLight|LoadAudio|LoadFromScene|LoadMotion|LoadObject|LoadObjectLayer|LoadPreview|LoadScene|LocalCoordinateSystem|MakePreview|MaskColor|MaskPosition|MasterPlugins|MatchGoalOrientation|MatteColor|MatteObject|MetaballResolution|Model|MorphAmount|MorphAmountTool|MorphMTSE|MorphSurfaces|MorphTarget|MotionBlur|MotionBlurDOFPreview|MotionOptions|MovePathTool|MovePivotTool|MoveTool|NadirColor|NetRender|NextFrame|NextItem|NextKey|NextSibling|NextViewLayout|NoiseReduction|Numeric|ObjectDissolve|OpenGLOptions|PController|PLimits|PStiffness|ParentCoordinateSystem|ParentInPlace|ParentItem|ParticleBlur|PathAlignLookAhead|PathAlignMaxLookSteps|PathAlignReliableDist|PathsOptions|Pause|PerspectiveView|PivotPosition|PivotRotation|PixelAspect|PlayAudio|PlayBackward|PlayForward|PlayPreview|PointLight|PolygonEdgeColor|PolygonEdgeFlags|PolygonEdgeThickness|PolygonEdgeZScale|PolygonSize|Position|Presets|PreviewFirstFrame|PreviewFrameStep|PreviewLastFrame|PreviewOptions|PreviousFrame|PreviousItem|PreviousKey|PreviousSibling|PreviousViewLayout|Quit|RadiosityIntensity|RadiosityTolerance|RadiosityType|RayRecursionLimit|RayTraceReflection|RayTraceRefraction|RayTraceShadows|RayTraceTransparency|ReceiveShadow|RecentContentDirs|RecentScenes|ReconstructionFilter|RecordMaxAngles|RecordMinAngles|RecordPivotRotation|RecordRestPosition|Redraw|RedrawNow|Refresh|RefreshNow|RegionPosition|RemoveEnvelope|RemoveFromSelection|RemoveServer|Rename|RenderFrame|RenderLines|RenderOptions|RenderScene|RenderSelected|RenderThreads|ReplaceObjectLayer|ReplaceWithNull|ReplaceWithObject|Reset|ResolutionMultiplier|RestLengthTool|RightView|RotatePivotTool|RotateTool|Rotation|SaveAllObjects|SaveCommandList|SaveCommandMessages|SaveEndomorph|SaveLWSC1|SaveLight|SaveMotion|SaveObject|SaveObjectCopy|SavePreview|SaveScene|SaveSceneAs|SaveSceneCopy|SaveTransformed|SaveViewLayout|Scale|SceneEditor|Scene_SetWindowPos|Scene_SetWindowSize|SchematicPosition|SchematicView|SelectAllBones|SelectAllCameras|SelectAllLights|SelectAllObjects|SelectByName|SelectChild|SelectItem|SelectParent|SelfShadow|ShadowColor|ShadowExclusion|ShadowMapAngle|ShadowMapFitCone|ShadowMapFuzziness|ShadowMapSize|ShadowType|ShowCages|ShowFieldChart|ShowHandles|ShowIKChains|ShowMotionPaths|ShowSafeAreas|ShowTargetLines|ShrinkEdgesWithDistance|SingleView|SizeTool|SkelegonsToBones|SkyColor|Spotlight|SquashTool|Statistics|StatusMsg|Stereoscopic|StretchTool|SubPatchLevel|SubdivisionOrder|SurfaceEditor|Synchronize|TargetItem|TopView|UnaffectedByFog|UnaffectedByIK|Undo|UnseenByAlphaChannel|UnseenByCamera|UnseenByRays|UseGlobalBlur|UseGlobalMask|UseGlobalResolution|UseMorphedPositions|VIPER||ViewLayout|VolumetricLighting|VolumetricLightingOptions|VolumetricRadiosity|Volumetrics|WorldCoordinateSystem|XYView|XZView|ZYView|ZenithColor|ZoomFactor|ZoomIn|ZoomInX2|ZoomOut|ZoomOutX2)\\b",
+			"name": "support.other.lscript",
+			"comment": "Command Sequence commands"
+		},
+
+		{
+			"match": "\\@(asyncspawn|data|define|else|end|fpdepth|if|include|insert|library|localipc|name|save|script|sequence|version|warnings)",
+			"name": "keyword.other.lscript",
+			"comment": "Pragmas"
+		},
+		{
+			"match": "\\b(Camera|Channel|ChannelGroup|Envelope|File|Glyph|Icon|Image|Light|Mesh|Scene|Surface|VMchannel|custom|displace|generic|image|motion|master|modeler|relative|shader|layouttool|platform)\\b",
+			"name": "support.other.lscript",
+			"comment": ""
+		},
+
+
+
+		{
+			"match": "\\b([A-Za-z_0-9]+)\\b\\s*[.,);\\[\\]]",
+			"captures": 
+			{
+				"1": { "name": "variable.other.lscript" }
+			},
+			"comment": "assume remaining words as variables if they end with .,);[]"
+		},
+		{
+			"match": "\\b([A-Za-z_0-9]+)\\b\\s*([=*+-/%!<>&|])",
+			"captures": 
+			{
+				"1": { "name": "variable.other.lscript" },
+				"2": { "name": "keyword.operator.lscript" }
+			},
+			"comment": "assume remaining words as variables if they end with !=+-/*%"
+		}
+	],
+	"uuid": "e4e08660-13df-11e1-be50-0800200c9a66"
+}
