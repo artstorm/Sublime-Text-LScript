@@ -39,21 +39,28 @@
 
 
 		{
-			"comment": "entity"
-		},
-		{
-			"match": "(^[a-zA-Z_0-9]+)(\\s*$|:)",
+			"match": "(^[a-zA-Z_0-9]+)(\\s*$|\\s*\\{)",
 			"captures":
 			{
 				"1": { "name": "entity.name.function.lscript" }
 			},
-			"comment": "Definition of a new funciton"
+			"comment": "Definition of a function without args"
 		},
-
-
-
 		{
-			"comment": "invalid"
+			"begin": "(^[a-zA-Z_0-9]+):",
+			"end": "\\{|$",
+			"captures":
+			{
+				"1": { "name": "entity.name.function.lscript" }
+			},
+			"patterns": [
+			{
+				"match": "[a-zA-Z_]",
+				"name": "variable.parameter.lscript",
+				"comment": "Escape sequences"
+			}
+			],
+			"comment": "Definition of a function with args"
 		},
 
 

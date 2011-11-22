@@ -57,10 +57,6 @@
 			<string>constant.language.lscript</string>
 		</dict>
 		<dict>
-			<key>comment</key>
-			<string>entity</string>
-		</dict>
-		<dict>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -70,13 +66,36 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Definition of a new funciton</string>
+			<string>Definition of a function without args</string>
 			<key>match</key>
-			<string>(^[a-zA-Z_0-9]+)(\s*$|:)</string>
+			<string>(^[a-zA-Z_0-9]+)(\s*$|\s*\{)</string>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>(^[a-zA-Z_0-9]+):</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.lscript</string>
+				</dict>
+			</dict>
 			<key>comment</key>
-			<string>invalid</string>
+			<string>Definition of a function with args</string>
+			<key>end</key>
+			<string>\{|$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>Escape sequences</string>
+					<key>match</key>
+					<string>[a-zA-Z_]</string>
+					<key>name</key>
+					<string>variable.parameter.lscript</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>comment</key>
