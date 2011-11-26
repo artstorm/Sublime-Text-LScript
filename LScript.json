@@ -2,7 +2,7 @@
 	"name": "LScript",
 	"scopeName": "source.lscript", 
 	"fileTypes": ["ls"],
-	"comment": "LightWave 3D LScript Syntax Definition v1.0.",
+	"comment": "LightWave 3D LScript Syntax Definition v0.5.",
 	"patterns": [
 
 		{
