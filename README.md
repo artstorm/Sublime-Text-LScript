@@ -5,10 +5,11 @@ Syntax highlighting, auto completion, templates, snippets and comments toggling.
 Usage
 -----
 
-In Sublime Text 2 auto completion are performed with ctrl+space and/or tab depending on the preferences. Currently auto completion is added for LScript GUI controls and LScript constants.
+Not much to say about the syntax highlighting, it just works. Auto completion in Sublime Text 2 is performed with ctrl+space and/or tab depending on the preferences. Currently auto completion is available for LScript GUI controls and LScript constants.
 
-All the standard templates from LSED are included as Sublime Snippets and can be used as boiler plates for new projects.
+All the standard templates from LSED are included as Sublime Snippets and can be used as boiler plates for new projects. Also a code snippet for Modeler monitor progress is included, tab triggered with `mon`.
 
+[More information &raquo;](http://www.artstorm.net/plugins/lscript-sublime-text-package/)
 
 ## Install
 Easiest way to install the package is to simply grab the `LScript.sublime-package` file. A git user can clone this repo directly into the Sublime application, which makes it a bit easier to keep up to date.
