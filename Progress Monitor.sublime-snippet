@@ -5,7 +5,7 @@ ${3:init loop code} {
 	// Code to process within the loop
 	if(monstep(${4:[step]})) {
 		// Abort loop code
-		return
+		return;
 	}
 }
 monend();
