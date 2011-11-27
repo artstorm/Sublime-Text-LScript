@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+moninit(${1:steps}, ${2:[message]});
+${3:init loop code} {
+	// Code to process within the loop
+	if(monstep(${4:[step]})) {
+		// Abort loop code
+		return
+	}
+}
+monend();
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>mon</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.lscript</scope>
+	<!-- description, syns i auto completion listan in view -->
+	<description>Progress Monitor</description>
+</snippet>
