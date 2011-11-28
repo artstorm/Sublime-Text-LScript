@@ -16,7 +16,7 @@ Easiest way to install the package is to simply grab the `LScript.sublime-packag
 
 ### Manual
 
-1. Download the latest [LScript.sublime-package](https://github.com/downloads/artstorm/Sublime-Text-LScript/LScript.sublime-package) from downloads.
+1. Download the latest `LScript.sublime-package` from [downloads](https://github.com/artstorm/Sublime-Text-LScript/downloads).
 2. Copy it to your Sublime's `Data/Installed Packages` folder.
 3. Restart Sublime Text.
 
